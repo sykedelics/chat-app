@@ -1,0 +1,61 @@
+<MDLabel>:
+    font_name: 'Roboto-Bold'
+    font_size: 20
+    markup: True
+    halign: 'center'
+<MDTextField>:
+    multiline: False
+    halign: "center"
+
+ScreenManager:  
+    Screen:
+        name: 'login'
+        BoxLayout:        
+            orientation: 'vertical'
+            BoxLayout:
+                orientation: 'vertical'
+                BoxLayout:
+                    size_hint_y: None
+                    height:'40dp'
+                    padding: 30
+                    spacing: 30
+                    MDLabel:
+                        text: "IP"
+                    MDTextField:
+                        id: ip
+                BoxLayout:
+                    size_hint_y: None
+                    height:'40dp'
+                    padding: 30
+                    spacing: 30
+                    MDLabel:
+                        text: "Port"
+                    MDTextField:
+                        id: port
+                BoxLayout:
+                    size_hint_y: None
+                    height:'40dp'
+                    padding: 30
+                    spacing: 30
+                    MDLabel:
+                        text: "username"
+                    MDTextField:
+                        id: username
+            BoxLayout:
+                orientation: 'vertical'
+                MDRaisedButton:
+                    padding: 20
+                    spacing: 20
+                    text:'join'
+                    on_release: app.join_button
+                    md_bg_color: app.theme_cls.accent_light
+                    pos_hint: {"center_x": 0.5, "center_y": 1}
+
+    Screen:
+        name: 'chatroom'
+
+        BoxLayout:
+            MDRaisedButton:
+                text: 'Disconnect'
+                on_release: root.current= 'login'   
+                md_bg_color: app.theme_cls.primary_dark  

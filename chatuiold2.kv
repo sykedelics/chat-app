@@ -1,0 +1,74 @@
+<WhiteLabel@MDLabel>
+    size_hint_y: None
+    height: self.texture_size[1]
+    theme_text_color:"Custom"
+    text_color: 1, 1, 1, 1
+
+<FieldRound@MDTextFieldRound>
+    pos_hint: {"center_x": .5}
+    normal_color: 0, 1, 1, .5
+    icon_left_color: 1, 1, 1, 1
+ScreenManager:
+    Screen:
+        name: 'login'
+        FitImage:
+            source: 'bg.jpg'
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            size_hint_x: .75
+            height: self.minimum_height
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            padding: "24dp", "24dp", "24dp", "32dp"
+            spacing: "12dp"
+            
+            canvas:
+                color:
+                    rgba: 1, 1, 1, .2
+                rectangle:
+                    pos: self.pos
+                    size: self.size
+
+                     
+            WhiteLabel:
+                text:'REGISTER FOR AN ACCOUNT'
+                bold: True 
+                font_style: 'Button'
+            Widget:
+                size_hint_y: None
+                height: '4dp' 
+            WhiteLabel:
+                text: "Welcome !"
+                bold: True
+
+            WhiteLabel:
+                text: 'Please enter your details carefully'
+                font_style: "Caption"
+
+            FieldRound:
+                id: ip
+                icon_left: "compass"
+                hint_text: "IP Address"
+            FieldRound:
+                id: port
+                icon_left: "dns"
+                hint_text: "Port"
+            FieldRound:
+                id: username
+                icon_left: "mail"
+                hint_text: "username"
+
+            MDRaisedButton:
+                text:"JOIN"
+                pos_hint:{"center_x": .5}
+                md_bg_color: 0, 1, 1, .5
+                on_release: app.join_button
+    Screen:
+        name: 'chatroom'
+
+        BoxLayout:
+            MDRaisedButton:
+                text: 'Disconnect'
+                on_release: root.current= 'login'   
+                md_bg_color: app.theme_cls.primary_dark    
